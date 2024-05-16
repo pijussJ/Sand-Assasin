@@ -4,9 +4,11 @@ This is an intense and engaging action game that merges the atmosphere of the Du
 You envision yourself as an unconventional fighter armed with mysterious skills, striving to stay alive and achieve your objective.
 
 Traversing through endless stretches of desert sand and rocks, you must be observant and strategic, because an enemy can strike at any moment.
+```
 #Roles
 1. Mantas - Audio.
 2. Dominykas - Coding.
 3. Kipras - Level design and UI.
 4. Nojus - 3D design and UI.
 5. Pijus - Level design and effects.
+```
