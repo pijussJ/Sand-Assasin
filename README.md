@@ -5,7 +5,7 @@ You envision yourself as an unconventional fighter armed with mysterious skills,
 
 Traversing through endless stretches of desert sand and rocks, you must be observant and strategic, because an enemy can strike at any moment.
 ##Roles
-1. 'Mantas' - Audio.
+1. Mantas - Audio.
 2. Dominykas - Coding.
 3. Kipras - Level design and UI.
 4. Nojus - 3D design and UI.
