@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -9,25 +8,32 @@ public class PlayerHealth : MonoBehaviour
     public int currentHydration;
 
     public HydrationBar hydrationBar;
+
+    private bool isDehydrating = true;
+
     void Start()
     {
         currentHydration = maxHydration;
         hydrationBar.SetMaxHydration(maxHydration);
+        DecreaseHydrationOverTime();
     }
 
-    void Update()
+    async void DecreaseHydrationOverTime()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        while (currentHydration > 0 && isDehydrating)
         {
-            TakeDamage(20);
+            await Task.Delay(1000); // Wait for 1 second
+            TakeDamage(1); // Decrease hydration by 1
         }
     }
 
     void TakeDamage(int damage)
     {
         currentHydration -= damage;
-
+        if (currentHydration < 0)
+        {
+            currentHydration = 0;
+        }
         hydrationBar.SetHydration(currentHydration);
     }
-
 }
