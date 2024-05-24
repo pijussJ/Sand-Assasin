@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/MainMenuScene.unity
+    guid: d2f197f9121a4be4599fd8fcbff87750
+  - enabled: 1
+    path: Assets/Scenes/Kipras scene.unity
+    guid: 4471eb35552bb214096d4059c600e686
   m_configObjects: {}
