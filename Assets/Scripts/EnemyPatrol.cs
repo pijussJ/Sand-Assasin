@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyPatrol : MonoBehaviour
 {
     public float speed;
+    public float minDistanceToTarget;
     public List<Transform> targets = new List<Transform>();
 
     int currentIndex = 0;
@@ -20,9 +21,10 @@ public class EnemyPatrol : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, agent.destination) < 1)
+        if (Vector3.Distance(transform.position, agent.destination) < minDistanceToTarget)
         {
             NextDestination();
+            print("yippe");
         }
     }
 
