@@ -21,10 +21,9 @@ public class EnemyPatrol : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, agent.destination) < minDistanceToTarget)
+        if (Vector3.Distance(transform.position, agent.destination) <= minDistanceToTarget)
         {
             NextDestination();
-            print("yippe");
         }
     }
 
@@ -33,6 +32,7 @@ public class EnemyPatrol : MonoBehaviour
         agent.destination = targets[currentIndex].position;
 
         currentIndex++;
+
         if (currentIndex >= targets.Count)
         {
             currentIndex = 0;

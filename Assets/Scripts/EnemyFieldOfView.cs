@@ -16,6 +16,8 @@ public class EnemyFieldOfView : MonoBehaviour
 
     public bool canSeePlayer;
 
+    public GameObject detectionTextIndicator;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -56,5 +58,10 @@ public class EnemyFieldOfView : MonoBehaviour
         }
         else if (canSeePlayer)
             canSeePlayer = false;
+    }
+
+    private void Update()
+    {
+        detectionTextIndicator.SetActive(canSeePlayer);
     }
 }

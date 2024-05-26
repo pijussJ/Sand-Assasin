@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
             return;
 
         Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayers);
-        //hitPlayer[0].GetComponent<PlayerHealth>().TakeDamage(damageToPlayer);
+        hitPlayer[0].GetComponent<PlayerHealth>().TakeDamage(damageToPlayer);
         nextAttackTime = Time.time + attackInterval;
     }
 
