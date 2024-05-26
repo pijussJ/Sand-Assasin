@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Kipras scene.unity
     guid: 4471eb35552bb214096d4059c600e686
+  - enabled: 1
+    path: Assets/Scenes/First main scene.unity
+    guid: 7f6c1d632c1c87b48bcda0f84758d0be
+  - enabled: 1
+    path: Assets/Scenes/CreditsScene.unity
+    guid: 7e1f0e28ae0c88f48920fe8a2026e4ea
   m_configObjects: {}
