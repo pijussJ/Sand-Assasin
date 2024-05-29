@@ -7,10 +7,13 @@ public class EnemyFieldOfView : MonoBehaviour
 {
     public float defaultRadius;
     public float radiusWhenSeesPlayer;
+    public float sandstormRadius;
     [Range(0, 360)]
     public float defaultAngle;
     [Range(0, 360)]
     public float angleWhenSeesPlayer;
+    [Range(0, 360)]
+    public float sandstormAngle;
 
     public float radius;
     public float angle;
@@ -45,8 +48,21 @@ public class EnemyFieldOfView : MonoBehaviour
     {
         if (canSeePlayer)
         {
-            radius = radiusWhenSeesPlayer;
-            angle = angleWhenSeesPlayer;
+            if (!Sandstorm.isSandstorm)
+            {
+                radius = radiusWhenSeesPlayer;
+                angle = angleWhenSeesPlayer;
+            }
+            else
+            {
+                radius = defaultRadius;
+                angle = defaultAngle;
+            }
+        }
+        else if (Sandstorm.isSandstorm)
+        {
+            radius = sandstormRadius;
+            angle = sandstormAngle;
         }
         else
         {

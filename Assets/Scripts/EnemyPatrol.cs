@@ -11,14 +11,20 @@ public class EnemyPatrol : MonoBehaviour
 
     public List<Transform> targets = new List<Transform>();
 
+    public AudioClip spotSound;
+    public AudioSource walkingAudio;
+
     int currentIndex = 0;
 
     bool canSeePlayerCopy;
     float delayCopy;
 
+
     NavMeshAgent agent;
 
     EnemyFieldOfView fov;
+
+    AudioSource source;
 
     private void Start()
     {
@@ -30,10 +36,14 @@ public class EnemyPatrol : MonoBehaviour
         NextDestination();
 
         delayCopy = playerEscapeDelay;
+
+        source = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
+        walkingAudio.mute = !(agent.velocity.magnitude >= 0.1f);
+
         if (Vector3.Distance(transform.position, agent.destination) <= minDistanceToTarget)
         {
             NextDestination();
@@ -42,6 +52,9 @@ public class EnemyPatrol : MonoBehaviour
         if (fov.canSeePlayer)
         {
             agent.destination = fov.player.transform.position;
+
+            if (!canSeePlayerCopy)
+                source.PlayOneShot(spotSound);
         }
         else if (canSeePlayerCopy)
         {

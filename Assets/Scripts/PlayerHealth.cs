@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public int currentHydration;
 
     public int constantHydrationDamage = 1;
+    public int sandstormHydrationDamage = 3;
     public float constantHydrationDamageInterval = 2f;
 
     public int passiveHealingAmount = 2;
@@ -21,6 +22,12 @@ public class PlayerHealth : MonoBehaviour
 
     public string nextSceneName;
 
+    public AudioClip rehydrationSound;
+    public AudioClip takeDamageSound;
+    public AudioClip spawnSound;
+
+    AudioSource source;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -29,11 +36,17 @@ public class PlayerHealth : MonoBehaviour
         hydrationBar.SetMaxHydration(maxHydration);
 
         InvokeRepeating("TakeConstantHydrationDamage", constantHydrationDamageInterval, constantHydrationDamageInterval);
+
+        source = GetComponent<AudioSource>();
+        source.PlayOneShot(spawnSound);
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+
+        if (damage > 0)
+            source.PlayOneShot(takeDamageSound);
 
         // If player overheals
         if (currentHealth > maxHealth)
@@ -70,7 +83,13 @@ public class PlayerHealth : MonoBehaviour
 
     void TakeConstantHydrationDamage()
     {
-        TakeHydrationDamage(constantHydrationDamage);
+        int damage;
+        if (Sandstorm.isSandstorm)
+            damage = sandstormHydrationDamage;
+        else
+            damage = constantHydrationDamage;
+
+        TakeHydrationDamage(damage);
 
         // Passive healing
         if ((float)currentHydration / maxHydration >= hydrationHealingThresholdPercentage / 100f)
@@ -86,6 +105,7 @@ public class PlayerHealth : MonoBehaviour
             TakeHydrationDamage(-maxHydration);
 
             // Play rehydration sound
+            source.PlayOneShot(rehydrationSound);
         }
         if (other.gameObject.transform.parent.name.Contains("Teleporter"))
         {

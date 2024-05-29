@@ -14,11 +14,16 @@ public class PlayerCombat : MonoBehaviour
     public float attackInterval = 0.5f;
     float nextAttackTime = 0f;
 
+    public AudioClip attackSound;
+
     PlayerHealth health;
+
+    AudioSource source;
 
     private void Start()
     {
         health = GetComponent<PlayerHealth>();
+        source = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -28,6 +33,7 @@ public class PlayerCombat : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Attack();
+                source.PlayOneShot(attackSound);
                 nextAttackTime = Time.time + attackInterval;
             }
         }

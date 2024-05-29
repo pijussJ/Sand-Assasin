@@ -16,12 +16,19 @@ public class Enemy : MonoBehaviour
     float nextAttackTime;
     float attackStartRange = 3f;
 
+    public AudioClip takeDamageSound;
+    public AudioClip deathSound;
+    public AudioClip attackSound;
+
     EnemyFieldOfView fov;
+
+    AudioSource source;
 
     private void Start()
     {
         currentHealth = maxHealth;
         fov = GetComponent<EnemyFieldOfView>();
+        source = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -35,9 +42,11 @@ public class Enemy : MonoBehaviour
     public void Damage(int damage)
     {
         currentHealth -= damage;
-        print(currentHealth);
+
         if (currentHealth <= 0)
             Die();
+        else
+            source.PlayOneShot(takeDamageSound);
     }
 
     void Attack()
@@ -66,6 +75,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        source.PlayOneShot(deathSound);
         Destroy(gameObject);
     }
 }
