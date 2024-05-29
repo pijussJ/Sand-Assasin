@@ -5,8 +5,14 @@ using UnityEngine;
 
 public class EnemyFieldOfView : MonoBehaviour
 {
-    public float radius;
+    public float defaultRadius;
+    public float radiusWhenSeesPlayer;
     [Range(0, 360)]
+    public float defaultAngle;
+    [Range(0, 360)]
+    public float angleWhenSeesPlayer;
+
+    public float radius;
     public float angle;
 
     public GameObject player;
@@ -37,6 +43,17 @@ public class EnemyFieldOfView : MonoBehaviour
 
     private void FieldOfViewCheck()
     {
+        if (canSeePlayer)
+        {
+            radius = radiusWhenSeesPlayer;
+            angle = angleWhenSeesPlayer;
+        }
+        else
+        {
+            radius = defaultRadius;
+            angle = defaultAngle;
+        }
+        
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
 
         if (rangeChecks.Length != 0)

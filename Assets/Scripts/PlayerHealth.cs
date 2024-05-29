@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class PlayerHealth : MonoBehaviour
     public HydrationBar hydrationBar;
     public HydrationBar healthBar;
 
+    public string nextSceneName;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -26,14 +29,6 @@ public class PlayerHealth : MonoBehaviour
         hydrationBar.SetMaxHydration(maxHydration);
 
         InvokeRepeating("TakeConstantHydrationDamage", constantHydrationDamageInterval, constantHydrationDamageInterval);
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(20);
-        }
     }
 
     public void TakeDamage(int damage)
@@ -92,10 +87,14 @@ public class PlayerHealth : MonoBehaviour
 
             // Play rehydration sound
         }
+        if (other.gameObject.transform.parent.name.Contains("Teleporter"))
+        {
+            SceneManager.LoadScene(nextSceneName);
+        }
     }
 
     void Die()
     {
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

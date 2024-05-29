@@ -12,13 +12,24 @@ public class Enemy : MonoBehaviour
     public float attackRange;
     public LayerMask playerLayers;
     public float attackInterval;
-    float nextAttackTime;
 
-    //EnemyFieldOfView detection;
+    float nextAttackTime;
+    float attackStartRange = 3f;
+
+    EnemyFieldOfView fov;
 
     private void Start()
     {
         currentHealth = maxHealth;
+        fov = GetComponent<EnemyFieldOfView>();
+    }
+
+    private void Update()
+    {
+        if (fov.canSeePlayer && Vector3.Distance(attackPoint.position, fov.player.transform.position) <= attackStartRange + attackRange)
+        {
+            Attack();
+        }
     }
 
     public void Damage(int damage)
@@ -34,8 +45,14 @@ public class Enemy : MonoBehaviour
         if (Time.time < nextAttackTime)
             return;
 
+        // PLAY ANIMATION and maybe sound
+
         Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayers);
-        hitPlayer[0].GetComponent<PlayerHealth>().TakeDamage(damageToPlayer);
+        if (hitPlayer.Length <= 0)
+            return;
+
+        hitPlayer[0].GetComponentInParent<PlayerHealth>().TakeDamage(damageToPlayer);
+
         nextAttackTime = Time.time + attackInterval;
     }
 

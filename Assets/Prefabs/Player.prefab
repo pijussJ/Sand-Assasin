@@ -133,10 +133,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44446d95980f06847816de837797d4ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  maxHealth: 100
   maxHydration: 100
   currentHydration: 0
+  constantHydrationDamage: 1
+  constantHydrationDamageInterval: 2
+  passiveHealingAmount: 2
+  hydrationHealingThresholdPercentage: 70
   hydrationBar: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!114 &3559139331843415825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,9 +157,11 @@ MonoBehaviour:
   attackRange: 0.5
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   attackPoint: {fileID: 3443759399142014802}
   attackDamage: 40
+  attackHydrationCost: 20
+  stealthAttackHydrationCost: 5
   attackInterval: 0.5
 --- !u!1 &3188237332417966991
 GameObject:
