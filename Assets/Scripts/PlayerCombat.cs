@@ -9,9 +9,25 @@ public class PlayerCombat : MonoBehaviour
     public Transform attackPoint;
 
     public int attackDamage = 40;
+    public int attackHydrationCost = 20;
+    public int stealthAttackHydrationCost = 5;
     public float attackInterval = 0.5f;
     float nextAttackTime = 0f;
-    
+
+    public AudioClip attackSound;
+
+    public Animator animator;
+
+    PlayerHealth health;
+
+    AudioSource source;
+
+    private void Start()
+    {
+        health = GetComponent<PlayerHealth>();
+        source = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         if (Time.time >= nextAttackTime)
@@ -19,6 +35,8 @@ public class PlayerCombat : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Attack();
+                source.PlayOneShot(attackSound);
+                animator.Play("attack");
                 nextAttackTime = Time.time + attackInterval;
             }
         }
@@ -32,9 +50,16 @@ public class PlayerCombat : MonoBehaviour
         {
             Enemy enemy = hitEnemy.GetComponent<Enemy>();
             if (!hitEnemy.GetComponent<EnemyFieldOfView>().canSeePlayer)
-                enemy.Damage(enemy.maxHealth); // Stealth kill
+            {
+                // Stealth kill
+                enemy.Damage(enemy.maxHealth);
+                health.TakeHydrationDamage(stealthAttackHydrationCost);
+            }
             else
+            {
                 enemy.Damage(attackDamage);
+                health.TakeHydrationDamage(attackHydrationCost);
+            }
         }
     }
 

@@ -5,8 +5,17 @@ using UnityEngine;
 
 public class EnemyFieldOfView : MonoBehaviour
 {
-    public float radius;
+    public float defaultRadius;
+    public float radiusWhenSeesPlayer;
+    public float sandstormRadius;
     [Range(0, 360)]
+    public float defaultAngle;
+    [Range(0, 360)]
+    public float angleWhenSeesPlayer;
+    [Range(0, 360)]
+    public float sandstormAngle;
+
+    public float radius;
     public float angle;
 
     public GameObject player;
@@ -15,6 +24,8 @@ public class EnemyFieldOfView : MonoBehaviour
     public LayerMask obstructionMask;
 
     public bool canSeePlayer;
+
+    public GameObject detectionTextIndicator;
 
     private void Start()
     {
@@ -35,6 +46,30 @@ public class EnemyFieldOfView : MonoBehaviour
 
     private void FieldOfViewCheck()
     {
+        if (canSeePlayer)
+        {
+            if (!Sandstorm.isSandstorm)
+            {
+                radius = radiusWhenSeesPlayer;
+                angle = angleWhenSeesPlayer;
+            }
+            else
+            {
+                radius = defaultRadius;
+                angle = defaultAngle;
+            }
+        }
+        else if (Sandstorm.isSandstorm)
+        {
+            radius = sandstormRadius;
+            angle = sandstormAngle;
+        }
+        else
+        {
+            radius = defaultRadius;
+            angle = defaultAngle;
+        }
+        
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
 
         if (rangeChecks.Length != 0)
@@ -56,5 +91,10 @@ public class EnemyFieldOfView : MonoBehaviour
         }
         else if (canSeePlayer)
             canSeePlayer = false;
+    }
+
+    private void Update()
+    {
+        detectionTextIndicator.SetActive(canSeePlayer);
     }
 }
