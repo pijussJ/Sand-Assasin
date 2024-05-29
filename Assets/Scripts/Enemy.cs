@@ -20,8 +20,9 @@ public class Enemy : MonoBehaviour
     public AudioClip deathSound;
     public AudioClip attackSound;
 
-    EnemyFieldOfView fov;
+    public Animator animator;
 
+    EnemyFieldOfView fov;
     AudioSource source;
 
     private void Start()
@@ -54,7 +55,8 @@ public class Enemy : MonoBehaviour
         if (Time.time < nextAttackTime)
             return;
 
-        // PLAY ANIMATION and maybe sound
+        source.PlayOneShot(attackSound);
+        animator.Play("Attack");
 
         Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayers);
         if (hitPlayer.Length <= 0)

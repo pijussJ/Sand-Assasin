@@ -14,16 +14,15 @@ public class EnemyPatrol : MonoBehaviour
     public AudioClip spotSound;
     public AudioSource walkingAudio;
 
+    public Animator animator;
+
     int currentIndex = 0;
 
     bool canSeePlayerCopy;
     float delayCopy;
 
-
     NavMeshAgent agent;
-
     EnemyFieldOfView fov;
-
     AudioSource source;
 
     private void Start()
@@ -42,7 +41,17 @@ public class EnemyPatrol : MonoBehaviour
 
     private void Update()
     {
-        walkingAudio.mute = !(agent.velocity.magnitude >= 0.1f);
+        //walkingAudio.mute = !(agent.velocity.magnitude >= 0.1f);
+        if (agent.velocity.magnitude >= 0.1f)
+        {
+            walkingAudio.mute = false;
+            animator.Play("Walk");
+        }
+        else
+        {
+            walkingAudio.mute = true;
+            animator.Play("Idle");
+        }
 
         if (Vector3.Distance(transform.position, agent.destination) <= minDistanceToTarget)
         {

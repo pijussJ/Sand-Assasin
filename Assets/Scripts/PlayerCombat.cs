@@ -16,6 +16,8 @@ public class PlayerCombat : MonoBehaviour
 
     public AudioClip attackSound;
 
+    public Animator animator;
+
     PlayerHealth health;
 
     AudioSource source;
@@ -34,6 +36,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 Attack();
                 source.PlayOneShot(attackSound);
+                animator.Play("attack");
                 nextAttackTime = Time.time + attackInterval;
             }
         }

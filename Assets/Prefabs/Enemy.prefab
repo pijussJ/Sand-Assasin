@@ -39,6 +39,7 @@ Transform:
   m_Children:
   - {fileID: 516841515789386813}
   - {fileID: 2954936560964832588}
+  - {fileID: 6753028879996380685}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 306.19, z: 0}
 --- !u!33 &5977274359308513791
@@ -56,7 +57,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956736684186018897}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -165,6 +166,7 @@ MonoBehaviour:
   - {fileID: 0}
   spotSound: {fileID: 8300000, guid: 2103146a6b395db448dcd07c5f1cf386, type: 3}
   walkingAudio: {fileID: 1229749058881395764}
+  animator: {fileID: 3919026590015357591}
 --- !u!114 &1301790628655405138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +190,7 @@ MonoBehaviour:
   takeDamageSound: {fileID: 8300000, guid: 16f418ac1c5aa1d4cbdc0689c3947f7f, type: 3}
   deathSound: {fileID: 8300000, guid: 246c8b177cf3e7e419d3afc0f95c54b1, type: 3}
   attackSound: {fileID: 8300000, guid: 1a579d1cfde893a489858e331677583a, type: 3}
+  animator: {fileID: 3919026590015357591}
 --- !u!195 &2882440705504043981
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -465,3 +468,88 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &736186743252034491
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5819212888569961941}
+    m_Modifications:
+    - target: {fileID: 6305292426017818038, guid: d43cf6ca929f91749972e8e3553e446a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305292426017818038, guid: d43cf6ca929f91749972e8e3553e446a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305292426017818038, guid: d43cf6ca929f91749972e8e3553e446a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305292426017818038, guid: d43cf6ca929f91749972e8e3553e446a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305292426017818038, guid: d43cf6ca929f91749972e8e3553e446a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305292426017818038, guid: d43cf6ca929f91749972e8e3553e446a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305292426017818038, guid: d43cf6ca929f91749972e8e3553e446a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305292426017818038, guid: d43cf6ca929f91749972e8e3553e446a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305292426017818038, guid: d43cf6ca929f91749972e8e3553e446a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305292426017818038, guid: d43cf6ca929f91749972e8e3553e446a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305292426017818038, guid: d43cf6ca929f91749972e8e3553e446a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6686498138547592972, guid: d43cf6ca929f91749972e8e3553e446a,
+        type: 3}
+      propertyPath: m_Name
+      value: AnimatedEnemy (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d43cf6ca929f91749972e8e3553e446a, type: 3}
+--- !u!95 &3919026590015357591 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4347196409897722156, guid: d43cf6ca929f91749972e8e3553e446a,
+    type: 3}
+  m_PrefabInstance: {fileID: 736186743252034491}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6753028879996380685 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6305292426017818038, guid: d43cf6ca929f91749972e8e3553e446a,
+    type: 3}
+  m_PrefabInstance: {fileID: 736186743252034491}
+  m_PrefabAsset: {fileID: 0}

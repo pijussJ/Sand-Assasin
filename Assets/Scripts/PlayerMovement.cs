@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform orientation;
     public AudioSource orientationAudioSource;
+    public Animator animator;
 
     float horizontalInput;
     float verticalInput;
@@ -39,7 +40,17 @@ public class PlayerMovement : MonoBehaviour
     {
         MovePlayer();
 
-        orientationAudioSource.mute = !(rb.velocity.magnitude >= 0.1f);
+        //orientationAudioSource.mute = !(rb.velocity.magnitude >= 0.1f);
+        if (rb.velocity.magnitude >= 0.1f)
+        {
+            orientationAudioSource.mute = false;
+            animator.Play("Walk");
+        }
+        else
+        {
+            orientationAudioSource.mute = true;
+            animator.Play("Idle");
+        }
     }
 
     private void MyInput()
