@@ -132,6 +132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxHydration: 100
+  currentHydration: 0
+  hydrationBar: {fileID: 0}
 --- !u!1 &6083755069620066494
 GameObject:
   m_ObjectHideFlags: 0
