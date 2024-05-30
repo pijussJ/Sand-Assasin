@@ -16,7 +16,7 @@ Traversing through endless stretches of desert sand and rocks, you must be obser
 ```
 ## Gameplay
 ```
-```![image](https://github.com/pijussJ/Sand-Assasin/assets/110340406/27b75c17-562a-4c12-b57f-f68f9ae4dac4)```
+![image](https://github.com/pijussJ/Sand-Assasin/assets/110340406/27b75c17-562a-4c12-b57f-f68f9ae4dac4)
 
 ```
 
