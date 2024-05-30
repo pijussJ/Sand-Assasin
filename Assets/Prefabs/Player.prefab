@@ -573,8 +573,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e0526e1f0c06648af03f38d6d73b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sandstormDelaySeconds: 3
-  fogDensity: 0.1
+  sandstormDelaySeconds: 60
+  fogDensity: 0.05
 --- !u!82 &840137150728792797
 AudioSource:
   m_ObjectHideFlags: 0

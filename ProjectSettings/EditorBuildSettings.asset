@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/First main scene.unity
     guid: 7f6c1d632c1c87b48bcda0f84758d0be
   - enabled: 1
+    path: Assets/Scenes/Second Main Scene.unity
+    guid: 3253f6edd0129c84782d2fd679c72692
+  - enabled: 1
+    path: Assets/Scenes/Third Main Scene.unity
+    guid: f108734bef0f20f439f4b9da64b903d1
+  - enabled: 1
     path: Assets/Scenes/CreditsScene.unity
     guid: 7e1f0e28ae0c88f48920fe8a2026e4ea
   - enabled: 1
