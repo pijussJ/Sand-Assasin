@@ -11,11 +11,13 @@ Traversing through endless stretches of desert sand and rocks, you must be obser
 1. Mantas - Audio.
 2. Dominykas - Coding.
 3. Kipras - Level design and effects.
-4. Nojus - 3D design and UI.
+4. Nojus - 3D design.
 5. Pijus - Level design and UI.
 ```
 ## WebGL
 ```
-https://play.unity.com/mg/other/webgl-builds-410588
+## Play the game!
+
+You can find the WebGL version [here.](https://play.unity.com/mg/other/webgl-builds-410588)
 ```
 
