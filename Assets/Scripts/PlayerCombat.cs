@@ -36,7 +36,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 Attack();
                 source.PlayOneShot(attackSound);
-                animator.Play("attack");
+                animator.Play("Attack");
                 nextAttackTime = Time.time + attackInterval;
             }
         }

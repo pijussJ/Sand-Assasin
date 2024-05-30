@@ -23,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
     }
@@ -41,15 +44,23 @@ public class PlayerMovement : MonoBehaviour
         MovePlayer();
 
         //orientationAudioSource.mute = !(rb.velocity.magnitude >= 0.1f);
-        if (rb.velocity.magnitude >= 0.1f)
+
+         // Get the current animator state information
+        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
+
+        // Check if the current animation is not the "attack" animation
+        if (!currentState.IsName("Attack"))
         {
-            orientationAudioSource.mute = false;
-            animator.Play("Walk");
-        }
-        else
-        {
-            orientationAudioSource.mute = true;
-            animator.Play("Idle");
+            if (rb.velocity.magnitude >= 0.1f)
+            {
+                orientationAudioSource.mute = false;
+                animator.Play("Walk");
+            }
+            else
+            {
+                orientationAudioSource.mute = true;
+                animator.Play("Idle");
+            }
         }
     }
 
