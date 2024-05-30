@@ -18,6 +18,6 @@ Traversing through endless stretches of desert sand and rocks, you must be obser
 ```
 ## Play the game!
 
-You can find the WebGL version [here](https://play.unity.com/mg/other/webgl-builds-410588)
+You can find the WebGL version [here](https://play.unity.com/mg/other/build-i0h)
 ```
 
