@@ -11,11 +11,14 @@ Traversing through endless stretches of desert sand and rocks, you must be obser
 1. Mantas - Audio.
 2. Dominykas - Coding.
 3. Kipras - Level design and effects.
-4. Nojus - 3D design and UI.
+4. Nojus - 3D design.
 5. Pijus - Level design and UI.
 ```
+## Gameplay
+![image](https://github.com/pijussJ/Sand-Assasin/assets/110340406/27b75c17-562a-4c12-b57f-f68f9ae4dac4)
+
 ## WebGL
-```
-https://play.unity.com/mg/other/webgl-builds-410588
-```
+
+You can find the WebGL version [here](https://play.unity.com/mg/other/build-i0h) 
+
 
